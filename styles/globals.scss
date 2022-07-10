@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./fonts";
+
+@layer base {
+  html {
+    font-family: Circular Std, system-ui, sans-serif;
+  }
+}
