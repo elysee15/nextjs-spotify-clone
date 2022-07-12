@@ -19,7 +19,7 @@ function CoverCard() {
 
 export default function Player() {
   return (
-    <div className="flex bg-[#181818] z-30 fixed bottom-0 w-full text-white justify-between px-5 items-center py-5">
+    <div className="flex bg-[#181818] z-30 bottom-0 w-full text-white justify-between px-5 items-center py-5">
       <div className="flex justify-between items-center gap-6">
         <CoverCard />
         <button>

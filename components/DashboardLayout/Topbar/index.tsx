@@ -3,9 +3,7 @@ import ProfileMenu from "components/DashboardLayout/ProfileMenu";
 
 function Topbar() {
   return (
-    <nav
-      className={`bg-[#3333A3] flex justify-between w-screen pl-[350px] py-3 pr-10 fixed z-10 pt-3`}
-    >
+    <div className={`bg-[#3333A3] flex justify-between w-full px-10 py-3`}>
       <div className="flex gap-4">
         <Img
           src="/images/icons/Forward.svg"
@@ -19,7 +17,7 @@ function Topbar() {
         />
       </div>
       <ProfileMenu />
-    </nav>
+    </div>
   );
 }
 

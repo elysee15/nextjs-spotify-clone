@@ -11,10 +11,11 @@ export default function MixCard({ imgSrc, title, subtitle }: TopMixCardProps) {
       <Img
         src={imgSrc}
         containerClassName="aspect-square w-full h-full overflow-hidden"
+        priority
       />
       <div>
-        <h1 className="text-white text-lg">{title}</h1>
-        <h4 className="text-[#B3B3B3]">{subtitle}</h4>
+        <h1 className="text-white text-md">{title}</h1>
+        <h4 className="text-[#B3B3B3] text-sm">{subtitle}</h4>
       </div>
       <button className="absolute right-3 bottom-[6.6rem] hidden group-hover:block ">
         <Img

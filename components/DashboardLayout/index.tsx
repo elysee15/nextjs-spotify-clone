@@ -3,6 +3,7 @@ import { MENU_WIDTH } from "constants/menu";
 import { ReactNode } from "react";
 import SideBar from "./Sidebar";
 import Topbar from "./Topbar";
+import styles from "styles/dashboard.module.scss";
 
 type DashboardLayoutProps = {
   children: ReactNode;
@@ -10,11 +11,17 @@ type DashboardLayoutProps = {
 
 function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <div>
-      <SideBar />
-      <Topbar />
-      <div style={{ paddingLeft: MENU_WIDTH }}>{children}</div>
-      <Player />
+    <div className={styles.container}>
+      <aside>
+        <SideBar />
+      </aside>
+      <header>
+        <Topbar />
+      </header>
+      <main className="overflow-x-scroll">{children}</main>
+      <footer>
+        <Player />
+      </footer>
     </div>
   );
 }

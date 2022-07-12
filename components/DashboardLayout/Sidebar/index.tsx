@@ -1,42 +1,49 @@
 import { LIKED_SONGS, MENU_WIDTH } from "constants/menu";
+import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { TNavItem } from "types";
-import Img from "../../Img";
+import clsx from "clsx";
+import HomeIcon from "components/icons/HomeIcon";
+import SearchIcon from "components/icons/SearchIcon";
+import LibraryIcon from "components/icons/LibraryIcon";
+import LikedSongsIcon from "components/icons/LikedSongsIcon";
+import PlusIcon from "components/icons/PlusIcon";
 
 export const NAV_ITEMS: TNavItem[] = [
   {
     title: "Home",
     route: "/",
-    iconPath: "/images/icons/house.svg",
+    icon: HomeIcon,
   },
   {
     title: "Search",
     route: "/search",
-    iconPath: "/images/icons/Search_S.svg",
+    icon: SearchIcon,
   },
   {
     title: "Your Library",
     route: "/your-library",
-    iconPath: "/images/icons/your-library.svg",
+    icon: LibraryIcon,
   },
 
   {
     title: "Create Playlist",
     route: "/create-playlist",
-    iconPath: "/images/icons/create-playlist-icon.svg",
+    icon: PlusIcon,
     className: "mt-8",
   },
   {
     title: "Liked Songs",
     route: "/liked-songs",
-    iconPath: "/images/icons/liked-songs.svg",
+    icon: LikedSongsIcon,
   },
 ];
 
 const LikedSongs = () => {
   return (
     <div>
-      <ul>
+      <ul className="text-sm">
         {LIKED_SONGS.map((item) => (
           <li key={item.title} className={item.className}>
             <Link href={"/#"}>
@@ -52,29 +59,50 @@ const LikedSongs = () => {
 };
 
 function SideBar() {
+  const router = useRouter();
+
   return (
-    <nav className={`h-screen bg-black px-5 fixed z-20 w-[300px]`}>
-      <ul className="text-white pt-12">
-        {NAV_ITEMS.map((item) => (
-          <li key={item.title} className={item.className}>
-            <Link href={item.route}>
-              <a className="flex gap-3 items-center py-2 text-gray-400 hover:text-white duration-200 font-light">
-                {item.iconPath && (
-                  <Img
-                    src={item.iconPath}
-                    alt={item.title}
-                    containerClassName="h-6 w-6"
-                  />
-                )}
-                {item.title}
-              </a>
-            </Link>
-          </li>
-        ))}
-        <hr className="border-r border-[#282828] my-4" />
-      </ul>
-      <LikedSongs />
-    </nav>
+    <div className="h-screen px-5 z-20 overflow-hidden w-[300px] bg-black">
+      <nav>
+        <Link href="/#">
+          <a className="relative w-full aspect-[2_/_1] h-10 mt-5 mb-6 block">
+            <Image
+              src="/Spotify_logo_with_text.svg.png"
+              className=""
+              alt="Spotify logo"
+              layout="fill"
+              objectFit="contain"
+              objectPosition="left"
+            />
+          </a>
+        </Link>
+        <ul className="text-white">
+          {NAV_ITEMS.map((item) => {
+            const isActive = item.route === router.asPath;
+
+            return (
+              <li key={item.title} className={clsx(item.className, "group")}>
+                <Link href={item.route}>
+                  <a
+                    className={clsx(
+                      isActive ? "text-white" : "text-gray-400",
+                      `flex gap-3 items-center py-2  group-hover:text-white duration-200 font-light text-sm`
+                    )}
+                  >
+                    {item.icon && (
+                      <item.icon fillRule={isActive ? "nonzero" : "evenodd"} />
+                    )}
+                    {item.title}
+                  </a>
+                </Link>
+              </li>
+            );
+          })}
+          <hr className="border-r border-[#282828] my-4" />
+        </ul>
+        <LikedSongs />
+      </nav>
+    </div>
   );
 }
 
