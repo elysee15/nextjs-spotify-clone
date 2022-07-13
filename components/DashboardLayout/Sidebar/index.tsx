@@ -23,19 +23,19 @@ export const NAV_ITEMS: TNavItem[] = [
   },
   {
     title: "Your Library",
-    route: "/your-library",
+    route: "/collection/podcasts",
     icon: LibraryIcon,
   },
 
   {
     title: "Create Playlist",
-    route: "/create-playlist",
+    route: "/playlist",
     icon: PlusIcon,
     className: "mt-8",
   },
   {
     title: "Liked Songs",
-    route: "/liked-songs",
+    route: "/collection/tracks",
     icon: LikedSongsIcon,
   },
 ];
@@ -86,7 +86,7 @@ function SideBar() {
                   <a
                     className={clsx(
                       isActive ? "text-white" : "text-gray-400",
-                      `flex gap-3 items-center py-2  group-hover:text-white duration-200 font-light text-sm`
+                      `flex gap-3 items-center py-2 group-hover:text-white duration-200 font-light text-sm`
                     )}
                   >
                     {item.icon && (

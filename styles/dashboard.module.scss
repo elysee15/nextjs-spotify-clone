@@ -10,21 +10,17 @@
 
   header {
     grid-area: header;
-    background: yellow;
   }
 
   main {
     grid-column: main;
-    background: purple;
   }
 
   aside {
     grid-row: sidebar;
-    background: gray;
   }
 
   footer {
     grid-column: footer;
-    background: red;
   }
 }

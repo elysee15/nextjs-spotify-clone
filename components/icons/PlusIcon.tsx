@@ -2,7 +2,7 @@ import * as React from "react";
 import { SVGProps } from "react";
 
 const PlusIcon = (props: SVGProps<SVGSVGElement>) => (
-  <div className="h-[24px] w-[24px] rounded-sm grid place-content-center bg-gray-400 group-hover:bg-white duration-200">
+  <div className="h-[24px] w-[24px] rounded-sm grid place-content-center bg-current group-hover:bg-white duration-200">
     <svg
       height={12}
       width={12}
